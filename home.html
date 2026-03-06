@@ -1,11 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Issues Tracker/home</title>
-</head>
-<body>
-    <h1 class="text-5xl">home page</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- daisy ui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css link -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>GitHub Issues Tracker/login page</title>
+   
+  </head>
+
+  <body class="bg-[#F8FAFC]">
+    <!-- header sectio  -->
+    <header class="flex flex-col space-y-5 justify-between w-11/12 mx-auto items-center p-5 md:flex-row">
+      <div class="flex items-center gap-2">
+        <img class="w-10" src="assets/github-logo.png" alt="" />
+        <h1 class="font-semibold text-2xl">GitHub Issues Tracker</h1>
+      </div>
+      <!-- search  -->
+      <div class="join">
+          <label class="input validator join-item"><i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search issues..." required />
+          </label>
+        <button class="btn btn-primary join-item"><i class="fa-solid fa-plus"></i>New Issue</button>
+      </div>
+    </header>
+    <hr class="text-gray-300">
+    
+  </body>
 </html>
