@@ -8,51 +8,56 @@ const closedBtn = document.getElementById("closed");
 
 // api all data
 const loadCardData = () => {
-    // loadingSpinner.classList.remove("hidden");
-    // // loadingSpinner.classList.remove("flex");
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((les) => les.json())
-    .then((data) =>{
-        allIssues = data.data;
-        displayCard(data.data);
+    .then((data) => {
+      allIssues = data.data;
+      displayCard(data.data);
     });
 };
-// api search section 
+// api search section
+document.getElementById("search-btn").addEventListener("click", () => {
+  const searchText = document.getElementById("search-input").value;
 
-// click button 
+  let url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`;
+  fetch(url)
+    .then((les) => les.json())
+    .then((data) => {
+      allBtn.classList.remove("btn-primary");
+      openBtn.classList.remove("btn-primary");
+      closedBtn.classList.remove("btn-primary");
+      displayCard(data.data);
+    });
+});
+// click button
 const loadbtn = (btnName) => {
-
-  if(btnName === "all"){
+  if (btnName === "all") {
     displayCard(allIssues);
     allBtn.classList.add("btn-primary");
     openBtn.classList.remove("btn-primary");
     closedBtn.classList.remove("btn-primary");
   }
 
-  if(btnName === "open"){
-    const openIssues = allIssues.filter(issue => issue.status === "open");
+  if (btnName === "open") {
+    const openIssues = allIssues.filter((issue) => issue.status === "open");
     displayCard(openIssues);
     allBtn.classList.remove("btn-primary");
     openBtn.classList.add("btn-primary");
     closedBtn.classList.remove("btn-primary");
   }
 
-  if(btnName === "closed"){
-    const closedIssues = allIssues.filter(issue => issue.status === "closed");
+  if (btnName === "closed") {
+    const closedIssues = allIssues.filter((issue) => issue.status === "closed");
     displayCard(closedIssues);
     allBtn.classList.remove("btn-primary");
     openBtn.classList.remove("btn-primary");
     closedBtn.classList.add("btn-primary");
   }
-
 };
-
-
 
 // card display section
 const displayCard = (eliments) => {
-
-document.getElementById("issues-count").innerText = eliments.length;
+  document.getElementById("issues-count").innerText = eliments.length;
 
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
