@@ -93,11 +93,25 @@
         <!-- card section  -->
         <div id="card-container" class="p-10 grid grid-cols-1 md:grid-cols-4 gap-5 h-[100%]">
         </div>
+      
         <!-- loading -->
          <div id="loading-spinner" class="flex justify-center items-center p-10 hidden">
             <span class="loading loading-spinner loading-xl"></span>
          </div>
       </section>
+      <!-- modal section -->
+  
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+      <div id="modal-card"></div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn btn-primary">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
     </main>
     <!-- js link  -->
     <script src="js/card.js"></script>
