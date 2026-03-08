@@ -57,33 +57,33 @@ const loadbtn = (btnName) => {
     closedBtn.classList.add("btn-primary");
   }
 };
-// bag section 
+// bag section
 const createLabels = (labels) => {
-  return labels.map((label, index) => {
-
-    if (index === 0) {
-      return `
+  return labels
+    .map((label, index) => {
+      if (index === 0) {
+        return `
       <h3 class="btn rounded-3xl text-[#EF4444] bg-[#FEECEC] border-[#FECACA] text-[10px]">
         <i class="fa-solid fa-bug"></i>${label.toUpperCase()}
       </h3>
       `;
-    }
+      }
 
-    if (index === 1) {
-      return `
+      if (index === 1) {
+        return `
       <h3 class="btn rounded-3xl bg-[#FFF8DB] border-[#FDE68A] text-[#D97706] text-[10px]">
         <i class="fa-solid fa-life-ring"></i>${label.toUpperCase()}
       </h3>
       `;
-    }
+      }
 
-    return `
+      return `
       <h2 class="btn rounded-3xl bg-gray-100 text-gray-600 border-gray-200">
         ${label.toUpperCase()}
       </h2>
     `;
-
-  }).join("");
+    })
+    .join("");
 };
 // card display section
 const displayCard = (eliments) => {
@@ -148,13 +148,13 @@ document.getElementById("card-container").addEventListener("click", (event) => {
   const id = card.dataset.id;
   let url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
   fetch(url)
-  .then((res)=> res.json())
-  .then((data) => showModal(data.data));
+    .then((res) => res.json())
+    .then((data) => showModal(data.data));
 });
 // modal
 let showModal = (data) => {
-    const modalCard = document.getElementById("modal-card");
-    modalCard.innerHTML = `
+  const modalCard = document.getElementById("modal-card");
+  modalCard.innerHTML = `
      <div class="p-5 space-y-5 bg-white">
           <h1 class="font-bold text-2xl">${data.title}</h1>
            <div class="flex items-center gap-4">
@@ -179,7 +179,7 @@ let showModal = (data) => {
               </div>
             </div>
          </div>
-    `
-    document.getElementById("my_modal_5").showModal();
+    `;
+  document.getElementById("my_modal_5").showModal();
 };
 loadCardData();

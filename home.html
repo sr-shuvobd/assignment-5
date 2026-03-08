@@ -27,7 +27,7 @@
     />
 
     <!-- css link -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <title>GitHub Issues Tracker/login page</title>
   </head>
 
@@ -44,7 +44,12 @@
       <div class="join">
         <label class="input validator join-item"
           ><i class="fa-solid fa-magnifying-glass"></i>
-          <input id="search-input" type="text" placeholder="Search issues..." required />
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search issues..."
+            required
+          />
         </label>
         <button id="search-btn" class="btn btn-primary join-item">
           <i class="fa-solid fa-plus"></i>New Issue
@@ -55,11 +60,13 @@
     <main class="w-full md:w-9/12 mx-auto">
       <!-- button  -->
       <section class="bg-white mt-10 space-x-3 p-6 rounded-2xl">
-        <button onclick="loadbtn(id)" id="all" class="btn px-10 btn-primary">
+        <button onclick="loadbtn('all')" id="all" class="btn px-10 btn-primary">
           All
         </button>
-        <button onclick="loadbtn(id)" id="open" class="btn px-8">Open</button>
-        <button onclick="loadbtn(id)" id="closed" class="btn px-6">
+        <button onclick="loadbtn('open')" id="open" class="btn px-8">
+          Open
+        </button>
+        <button onclick="loadbtn('closed')" id="closed" class="btn px-6">
           Closed
         </button>
       </section>
@@ -91,27 +98,32 @@
         </div>
         <hr class="text-gray-500" />
         <!-- card section  -->
-        <div id="card-container" class="p-5 grid grid-cols-1 md:grid-cols-4 gap-5 h-[100%]">
-        </div>
-      
+        <div
+          id="card-container"
+          class="p-5 grid grid-cols-1 md:grid-cols-4 gap-5 h-[100%]"
+        ></div>
+
         <!-- loading -->
-         <div id="loading-spinner" class="flex justify-center items-center p-10 hidden">
-            <span class="loading loading-spinner loading-xl"></span>
-         </div>
+        <div
+          id="loading-spinner"
+          class="flex justify-center items-center p-10 hidden"
+        >
+          <span class="loading loading-spinner loading-xl"></span>
+        </div>
       </section>
       <!-- modal section -->
-  
-<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box">
-      <div id="modal-card"></div>
-    <div class="modal-action">
-      <form method="dialog">
-        <button class="btn btn-primary">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
+
+      <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+      <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div id="modal-card"></div>
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn btn-primary">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </main>
     <!-- js link  -->
     <script src="js/card.js"></script>
