@@ -57,7 +57,34 @@ const loadbtn = (btnName) => {
     closedBtn.classList.add("btn-primary");
   }
 };
+// bag section 
+const createLabels = (labels) => {
+  return labels.map((label, index) => {
 
+    if (index === 0) {
+      return `
+      <h3 class="btn rounded-3xl text-[#EF4444] bg-[#FEECEC] border-[#FECACA] text-[10px]">
+        <i class="fa-solid fa-bug"></i>${label.toUpperCase()}
+      </h3>
+      `;
+    }
+
+    if (index === 1) {
+      return `
+      <h3 class="btn rounded-3xl bg-[#FFF8DB] border-[#FDE68A] text-[#D97706] text-[10px]">
+        <i class="fa-solid fa-life-ring"></i>${label.toUpperCase()}
+      </h3>
+      `;
+    }
+
+    return `
+      <h2 class="btn rounded-3xl bg-gray-100 text-gray-600 border-gray-200">
+        ${label.toUpperCase()}
+      </h2>
+    `;
+
+  }).join("");
+};
 // card display section
 const displayCard = (eliments) => {
   document.getElementById("issues-count").innerText = eliments.length;
@@ -100,18 +127,10 @@ const displayCard = (eliments) => {
             <div>
               <p class="text-gray-500 line-clamp-2 h-12">${eliment.description}</p>
             </div>
-            <div class="flex gap-3">
-              <h2
-                class="btn rounded-3xl text-[#EF4444] bg-[#FEECEC] border-[#FECACA]"
-              >
-                <i class="fa-solid fa-bug"></i>Bug
-              </h2>
-              <h2
-                class="btn rounded-3xl bg-[#FFF8DB] border-[#FDE68A] text-[#D97706]"
-              >
-                <i class="fa-solid fa-life-ring"></i>HELP WANTED
-              </h2>
+            <div class="flex flex-col md:flex-row gap-1 flex-wrap">
+              ${createLabels(eliment.labels)}
             </div>
+
             <hr class="text-gray-400" />
             <div class="space-y-4">
               <p class="text-gray-500">#${eliment.id} by ${eliment.author}</p>
@@ -137,35 +156,26 @@ let showModal = (data) => {
     const modalCard = document.getElementById("modal-card");
     modalCard.innerHTML = `
      <div class="p-5 space-y-5 bg-white">
-          <h1 class="font-bold text-2xl">Fix broken image uploads</h1>
+          <h1 class="font-bold text-2xl">${data.title}</h1>
            <div class="flex items-center gap-4">
-            <p class="btn text-white bg-green-500 rounded-4xl">Opened</p>
-            <p class="text-gray-500">Opened by Fahim Ahmed</p>
-            <p class="text-gray-500">22/02/2026</p>
+            <p class="btn text-white bg-green-500 rounded-4xl">${data.status}</p>
+            <p class="text-gray-500">${data.status} by ${data.author}</p>
+            <p class="text-gray-500">${new Date(data.createdAt).toLocaleDateString()}</p>
            </div>
-           <!-- ... -->
+    
            <div class="flex gap-3">
-              <h2
-                class="btn rounded-3xl text-[#EF4444] bg-[#FEECEC] border-[#FECACA]"
-              >
-                <i class="fa-solid fa-bug"></i>Bug
-              </h2>
-              <h2
-                class="btn rounded-3xl bg-[#FFF8DB] border-[#FDE68A] text-[#D97706]"
-              >
-                <i class="fa-solid fa-life-ring"></i>HELP WANTED
-              </h2>
+             ${createLabels(data.labels)}
             </div>
-            <!-- .... -->
-            <p class="text-gray-500">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+           
+            <p class="text-gray-500">${data.description}</p>
             <div class="grid grid-cols-2 bg-gray-100 p-5 rounded-2xl">
               <div>
                 <p class="text-gray-500">Assignee:</p>
-                <h2 class="font-semibold text-xl">Fahim Ahmed</h2>
+                <h2 class="font-semibold text-xl">${data.assignee || "Unassigned"}</h2>
               </div>
               <div>
                 <p class="text-gray-500">Priority:</p>
-                <p class="btn bg-red-500 rounded-4xl px-5  text-white">high</p>
+                <p class="btn bg-red-500 rounded-4xl px-5  text-white">${data.priority.toUpperCase()}</p>
               </div>
             </div>
          </div>
